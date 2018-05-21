@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Wall</title>
+</head>
+<body>
+
+<h1>Welcome to the CodingDojo Wall, {{session["username"]}} {{ session["id"]}} !</h1> 
+	<p><a href="/logout">log off</a> </p>
+
+<h2> Post a message</h2>
+	<form action="/post_message" method="post">
+		<Textarea name="message" cols= "100" rows="4" id="message"></Textarea>
+		<br>
+		<input type="submit" value="Post a message">	
+	</form>
+
+{% for user in all_users %}
+<tr>
+	<ul>
+		{{ user["first_name"]}} {{ user["last_name"]}}
+		{{ user["created_at"].strftime('%B %d, %Y')}}
+
+		<br> <DD>{{ user["message"]}}</DD>
+		<form action="/comment" method="post">
+			<Textarea name="comment" cols="92" rows="4" id="comment"></Textarea><br>
+			<input type="submit" value="Post a comment">
+		</form>
+	</ul>
+</tr>
+{% endfor %}
+
+	{{user}}
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+</head>
+
+<body>
+    <h1>Welcome!</h1>
+    <h3>Register</h3>
+    <!--lets do registration first because we can just tweak it to do a login later-->
+
+    <form action="/user_register" method="post">
+        {% csrf_token %}
+        <p>Name:
+            <input type="text" name="name" placeholder="Name">
+        </p>
+        <p>Alias:
+            <input type="text" name="alias" placeholder="Alias">
+        </p>
+        <p>Email:
+            <input type="text" name="email" placeholder="Email Address">
+        </p>
+        <p>Password:
+            <input type="password" name="password" placeholder="Password">
+        </p>
+        <p>Confirm PW:
+            <input type="password" name="confirm_password" placeholder="Confirm Password">
+        </p>
+        <p>Date of Birth:
+            <input type="date" name="birthday">
+        </p>
+        <input type="submit" value="Register">
+    </form>
+
+    <h3>Login</h3>
+    <form action="/user_login" method="post">
+        {% csrf_token %}
+        <p>Email:
+            <input type="text" name="email" placeholder="Email Address">
+        </p>
+        <p>Password:
+            <input type="password" name="password" placeholder="Password">
+        </p>
+        <input type="submit" value="Login">
+    </form>
+    <div>
+        {%if messages %}
+        <br> {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %} {% endif %}
+    
+    </div>
+</body>
+
+</html>
