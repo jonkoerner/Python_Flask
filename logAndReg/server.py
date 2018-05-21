@@ -109,4 +109,6 @@ def logout():
 	flash("You successfully logged out, good job!", "SUCCESS")	
 	return redirect("/")
 
+
+
 app.run(debug=True)
